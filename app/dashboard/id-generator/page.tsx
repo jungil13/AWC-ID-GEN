@@ -643,7 +643,7 @@ function IDCardFront({ employee, customization, orientation }: {
         top: 0,
         left: 0,
         right: 0,
-        height: headerH - (orientation === 'vertical' ? 45 : 25),
+        height: headerH - (orientation === 'vertical' ? 20 : 10),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
