@@ -656,7 +656,7 @@ function IDCardFront({ employee, customization, orientation }: {
           <img
             src={customization.logoUrl}
             alt="Logo"
-            style={{ maxHeight: orientation === 'vertical' ? 70 : 46, maxWidth: '70%', objectFit: 'contain' }}
+            style={{ maxHeight: orientation === 'vertical' ? 80 : 56, maxWidth: '70%', objectFit: 'contain', marginTop: 8 }}
           />
         ) : (
           <>

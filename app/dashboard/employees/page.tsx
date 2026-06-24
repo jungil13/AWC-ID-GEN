@@ -6,7 +6,8 @@ import {
   FileText, Phone, Camera, X, Loader2, AlertCircle, Users
 } from 'lucide-react'
 import { EmployeeWithDetails } from '@/types/database.types'
-import { supabase } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase';
+import Cropper from 'react-easy-crop';
 
 export default function EmployeesPage() {
   const [employees, setEmployees] = useState<EmployeeWithDetails[]>([])
