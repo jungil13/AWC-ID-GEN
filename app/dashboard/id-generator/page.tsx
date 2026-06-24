@@ -640,13 +640,15 @@ function IDCardFront({ employee, customization, orientation }: {
       {/* ── Logo / company in header ── */}
       <div style={{
         position: 'absolute',
-        top: orientation === 'vertical' ? 16 : 10,
-        left: 0, right: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        height: headerH - (orientation === 'vertical' ? 45 : 25),
         display: 'flex',
-        flexDirection: orientation === 'vertical' ? 'column' : 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: orientation === 'vertical' ? 4 : 8,
+        gap: 4,
         padding: '0 20px',
         zIndex: 5,
       }}>
@@ -654,7 +656,7 @@ function IDCardFront({ employee, customization, orientation }: {
           <img
             src={customization.logoUrl}
             alt="Logo"
-            style={{ maxHeight: orientation === 'vertical' ? 60 : 40, maxWidth: '65%', objectFit: 'contain' }}
+            style={{ maxHeight: orientation === 'vertical' ? 70 : 46, maxWidth: '70%', objectFit: 'contain' }}
           />
         ) : (
           <>
@@ -873,7 +875,7 @@ function IDCardBack({ employee, customization, orientation }: {
       style={{
         width: w,
         height: h,
-        borderRadius: 18,
+        borderRadius: 14,
         background: '#ffffff',
         fontFamily: 'system-ui, -apple-system, sans-serif',
         position: 'relative',
@@ -882,43 +884,36 @@ function IDCardBack({ employee, customization, orientation }: {
         flexShrink: 0,
       }}
     >
-      {/* Colored top */}
+      {/* ── Blue header background ── */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: topH, backgroundColor: primaryColor }} />
 
-      {/* Accent wave */}
-      <svg style={{ position: 'absolute', top: topH - 26, left: 0, width: '100%', overflow: 'visible', pointerEvents: 'none' }}
-        viewBox={`0 0 ${w} 50`} preserveAspectRatio="none" height={50}>
-        <path d={`M0,15 C${w*0.3},48 ${w*0.65},5 ${w},28 L${w},0 L0,0 Z`} fill={accentColor} opacity="0.85" />
-      </svg>
+      {/* Simplified header: solid primary color, no decorative curves */}
 
-      {/* White wave */}
-      <svg style={{ position: 'absolute', top: topH - 8, left: 0, width: '100%', overflow: 'visible', pointerEvents: 'none' }}
-        viewBox={`0 0 ${w} 50`} preserveAspectRatio="none" height={50}>
-        <path d={`M0,18 C${w*0.28},52 ${w*0.7},8 ${w},32 L${w},50 L0,50 Z`} fill="#ffffff" />
-      </svg>
 
-      {/* Logo in top section */}
+
+      {/* ── Logo / company in header (centered, matching front) ── */}
       <div style={{
         position: 'absolute',
-        top: -3,
+        top: 0,
         left: 0,
         right: 0,
-        height: topH - 8,
+        height: topH,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 4,
-        padding: '12px 16px 0',
+        padding: '0 20px',
+        zIndex: 5,
       }}>
         {customization.showLogo && customization.logoUrl ? (
-          <img src={customization.logoUrl} alt="Logo" style={{ maxHeight: orientation === 'vertical' ? 42 : 32, maxWidth: '55%', objectFit: 'contain' }} />
+          <img src={customization.logoUrl} alt="Logo" style={{ maxHeight: orientation === 'vertical' ? 56 : 40, maxWidth: '65%', objectFit: 'contain' }} />
         ) : (
           <>
-            <div style={{ fontSize: orientation === 'vertical' ? 22 : 18, fontWeight: 900, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
+            <div style={{ fontSize: orientation === 'vertical' ? 24 : 20, fontWeight: 900, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
               {customization.companyShort}
             </div>
-            <div style={{ fontSize: 6, fontWeight: 700, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.12em', textAlign: 'center' }}>
+            <div style={{ fontSize: 7, fontWeight: 700, color: 'rgba(255,255,255,0.8)', letterSpacing: '0.12em', textAlign: 'center', textTransform: 'uppercase' }}>
               {customization.companyName}
             </div>
           </>
